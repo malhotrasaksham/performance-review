@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="column pending-feedbacks p-3">
+    <h3>Pending Feedbacks</h3>
+    <div
+      class="item"
+      *ngFor="let feedback of pendingFeedbacks"
+      (click)="activatePendingFeedback(feedback.id)"
+    >
+      <div class="heading">{{ feedback.userForName }}</div>
+    </div>
+  </div>
+  <div class="column draft-feedbacks p-3">
+    <h3>Draft Feedbacks</h3>
+    <div
+      class="item"
+      *ngFor="let feedback of draftFeedbacks"
+      (click)="activateDraftFeedback(feedback.id)"
+    >
+      <div class="heading">{{ feedback.userForName }}</div>
+      <div class="description mt-3">{{ feedback.description }}</div>
+    </div>
+  </div>
+  <div class="column submitted-feedbacks p-3">
+    <h3>Submitted Feedbacks</h3>
+    <div class="item" *ngFor="let feedback of submittedFeedbacks">
+      <div class="heading">{{ feedback.userForName }}</div>
+      <div class="description mt-3">{{ feedback.description }}</div>
+    </div>
+  </div>
+</div>
+<div class="modal-mask" [class]="{ 'd-none': !activeFeedback }">
+  <div class="modal">
+    <h3>Feedback</h3>
+    <textarea
+      name="textarea"
+      id="textarea"
+      class="my-3 p-3 w-100"
+      maxlength="1000"
+      *ngIf="activeFeedback"
+      [(ngModel)]="activeFeedback.description"
+    ></textarea>
+    <div class="actions d-flex align-items-center">
+      <div class="flex-grow-1">
+        <button class="link" (click)="deactivateFeedback()">Cancel</button>
+      </div>
+      <button
+        class="secondary mr-3"
+        *ngIf="activeFeedback"
+        [disabled]="!activeFeedback.description"
+        (click)="changeStatus(1)"
+      >
+        Save as draft
+      </button>
+      <button
+        class="primary"
+        *ngIf="activeFeedback"
+        [disabled]="!activeFeedback.description"
+        (click)="changeStatus(2)"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>

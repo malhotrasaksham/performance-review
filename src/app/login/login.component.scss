@@ -1,0 +1,16 @@
+.flat-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  border: 2px solid #eee;
+  display: inline-block;
+  padding: 1rem;
+  background-color: #fff;
+  width: min(100%, 400px);
+  .error {
+    color: red;
+    text-align: center;
+  }
+}

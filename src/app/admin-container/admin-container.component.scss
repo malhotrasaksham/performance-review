@@ -1,0 +1,23 @@
+.left-rail,
+.right-rail {
+  display: inline-block;
+  background-color: #fff;
+}
+
+.left-rail {
+  min-width: 300px;
+  width: 300px;
+  ul {
+    list-style: none;
+    li {
+      cursor: pointer;
+      &.active {
+        background-color: #00205022;
+      }
+      &:hover {
+        background-color: #002050;
+        color: #fff;
+      }
+    }
+  }
+}

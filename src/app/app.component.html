@@ -1,0 +1,11 @@
+<header>
+  <span class="heading">Performance</span>
+  <ng-template [ngIf]="userName">
+    <span class="welcome pr-3">Hello, {{ userName }}</span>
+    <button class="secondary-inverted" (click)="logout()">Logout</button>
+  </ng-template>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer>All rights reserved</footer>
