@@ -1,0 +1,21 @@
+<div class="flat-modal">
+  <h2 class="mb-3">Login</h2>
+  <h6 class="mb-1">Username</h6>
+  <form (submit)="login($event)">
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Enter username"
+      class="p-2 mb-3 w-100"
+      autocomplete="off"
+      [(ngModel)]="username"
+    />
+    <div class="text-right">
+      <button class="primary" type="submit" [disabled]="!username">
+        Login
+      </button>
+    </div>
+  </form>
+  <div class="error" *ngIf="error">{{ error }}</div>
+</div>

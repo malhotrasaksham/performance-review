@@ -1,0 +1,27 @@
+.feedbacks {
+  display: flex;
+  flex-wrap: wrap;
+  .feedback {
+    border-radius: 0.5rem;
+    border: 2px solid #303132;
+    max-width: 40%;
+    .heading {
+      font-weight: bold;
+    }
+    .description {
+      font-style: italic;
+      &::before,
+      &::after {
+        content: "'";
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+      &::before {
+        padding-right: 0.5rem;
+      }
+      &::after {
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}

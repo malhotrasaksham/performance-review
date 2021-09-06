@@ -1,0 +1,70 @@
+<h2>Manage Feedbacks</h2>
+<p class="py-3">
+  Select a user below to manage it's feedbacks. For now, one can only assign a
+  feedback request
+</p>
+<div class="feedback-for">
+  Manage feedbacks for:
+  <select
+    name="users"
+    id="users"
+    class="mx-3"
+    (change)="updateSelectedUser($event.target)"
+  >
+    <option value="">Select a user</option>
+    <option *ngFor="let user of users" [value]="user.id">
+      {{ user.name }}
+    </option>
+  </select>
+</div>
+
+<div class="request-feedback py-3" [class]="{ 'd-none': !selectedUserId }">
+  Request feedback for:
+  <select
+    name="available-users"
+    id="available-users"
+    class="mx-3"
+    [(ngModel)]="requestFeedbackForUserId"
+  >
+    <option value="">Select a user</option>
+    <option *ngFor="let user of usersFeedbackPendingFor" [value]="user.id">
+      {{ user.name }}
+    </option>
+  </select>
+  <button
+    [disabled]="!requestFeedbackForUserId"
+    class="primary"
+    (click)="requestFeedback()"
+  >
+    Request
+  </button>
+</div>
+
+<div class="details" [class]="{ 'd-none': !selectedUserId }">
+  <h3 class="py-3">Pending Feedbacks</h3>
+  <div *ngIf="pendingFeedbacks && !pendingFeedbacks.length">
+    No feedbacks available
+  </div>
+  <div class="feedbacks pending">
+    <div
+      class="feedback p-3 m-3 ml-0"
+      *ngFor="let feedback of pendingFeedbacks"
+    >
+      <div class="heading">{{ feedback.userForName }}</div>
+    </div>
+  </div>
+
+  <h3 class="py-3">Submitted Feedbacks</h3>
+  <div *ngIf="submittedFeedbacks && !submittedFeedbacks.length">
+    No feedbacks available
+  </div>
+  <div class="feedbacks submitted">
+    <div
+      class="feedback p-3 m-3 ml-0"
+      *ngFor="let feedback of submittedFeedbacks"
+    >
+      <div class="heading">{{ feedback.userForName }}</div>
+      <div class="description mt-3">{{ feedback.description }}</div>
+    </div>
+  </div>
+</div>
